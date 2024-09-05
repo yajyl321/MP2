@@ -39,11 +39,11 @@ function Slider() {
   return (
     <div className="relative">
       <HiChevronLeft
-        className="hidden md:block text-white text-[30px] absolute mx-8 mt-[150px] cursor-pointer"
+        className="hidden md:block text-gray text-[30px] absolute mx-8 mt-[150px] cursor-pointer"
         onClick={() => sliderLeft(elementRef.current)}
       />
       <HiChevronRight
-        className="hidden md:block text-white text-[30px] absolute mx-8 mt-[150px] cursor-pointer right-0"
+        className="hidden md:block text-gray text-[30px] absolute mx-8 mt-[150px] cursor-pointer right-0"
         onClick={() => sliderRight(elementRef.current)}
       />
       <div
