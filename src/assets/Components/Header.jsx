@@ -23,7 +23,9 @@ function Header() {
   return (
     <div className="flex items-center gap-8 justify-between p-5">
       <img src={logo} className="w-[40px] md:w-[80px] object-cover" />
-      <h1>Pet store</h1>
+      <h1 className="text-black text-lefttext-[18px] font-semibold">
+        Pet store
+      </h1>
       <div className="flex gap-8">
         {menu.map((item) => (
           <HeaderItem name={item.name} Icon={item.icon} />
