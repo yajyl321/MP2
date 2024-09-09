@@ -14,43 +14,44 @@ function Slider() {
 
     getRandomDogImage()
       .then((resp) => {
-        console.log(resp.data);
-        setDogImageList(resp.data.message);
+        // Adjust based on response structure
+        setDogImageList(resp.data.message); // This depends on the API response
       })
       .catch((error) => {
         console.error("Error fetching dog images:", error);
+        // Optionally, set an error state here
       });
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const sliderRight = (element) => {
-    if (element) {
-      element.scrollLeft += screenWidth - 110;
+  const sliderRight = () => {
+    if (elementRef.current) {
+      elementRef.current.scrollLeft += screenWidth - 110;
     }
   };
 
-  const sliderLeft = (element) => {
-    if (element) {
-      element.scrollLeft -= screenWidth - 110;
+  const sliderLeft = () => {
+    if (elementRef.current) {
+      elementRef.current.scrollLeft -= screenWidth - 110;
     }
   };
 
   return (
     <div className="relative">
       <HiChevronLeft
-        className="hidden md:block text-gray text-[30px] absolute mx-8 mt-[150px] cursor-pointer"
-        onClick={() => sliderLeft(elementRef.current)}
+        className="hidden md:block text-gray text-[30px] absolute mx-8 mt-[150px] rounded-lg hover:border-[4px] cursor-pointer"
+        onClick={sliderLeft}
       />
       <HiChevronRight
-        className="hidden md:block text-gray text-[30px] absolute mx-8 mt-[150px] cursor-pointer right-0"
-        onClick={() => sliderRight(elementRef.current)}
+        className="hidden md:block text-gray text-[30px] absolute mx-8 mt-[150px] rounded-lg hover:border-[4px] cursor-pointer right-0"
+        onClick={sliderRight}
       />
       <div
         className="flex overflow-x-auto w-full px-16 py-4 scrollbar-hide"
         ref={elementRef}
       >
-        {dogImageList && dogImageList.length > 0 ? (
+        {dogImageList.length > 0 ? (
           dogImageList.map((imageUrl, index) => (
             <img
               key={index}
@@ -68,26 +69,3 @@ function Slider() {
 }
 
 export default Slider;
-
-// function Slider() {
-//     const [dogList, setDogList] = useState([]);
-
-//     const getDog = () => {
-//       GlobalApi.getDogBreeds()
-//         .then((resp) => {
-//           console.log(resp.weight);
-//           setDogList(resp.weight);
-//         })
-//         .catch((error) => {
-//           console.error("Error fetching dog breeds:", error);
-//         });
-//     };
-
-//     return <div>{dogList.map((item, index) => {
-
-//     })}</div>;
-
-//     useEffect(() => {
-//       getDog();
-//     }, []);
-//   }
