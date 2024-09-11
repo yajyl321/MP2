@@ -1,6 +1,7 @@
 import React from "react";
 import GenreList from "../Constant/GenreList";
-import PetList from "./PetList";
+import DogList from "./DogList";
+import CatList from "./CatList";
 
 function GenrePetList() {
   return (
@@ -15,7 +16,7 @@ function GenrePetList() {
               >
                 {item.name}
               </h2>
-              <PetList genreId={item.id} />
+              <DogList genreId={item.id} />
             </div>
           )
       )}
@@ -25,7 +26,7 @@ function GenrePetList() {
             className="text-[20px] text-black 
                 font-bold"
           >
-            {item.name}
+            <CatList genreId={item.id} />
           </h2>
         </div>
       ))}

@@ -26,9 +26,22 @@ const getdogBreed = async (limit = 15) => {
   }
 };
 
+const getcatBreed = async (limit = 15) => {
+  try {
+    const response = await axios.get(
+      `${catUrl}/breeds?api_key=${catapiKey}&limit=${limit}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error Fecthing cat breeds:", error);
+    throw error;
+  }
+};
+
 export default {
   getoneRandomCat,
   getoneRandomDog,
   getrandomDog,
   getdogBreed,
+  getcatBreed,
 };

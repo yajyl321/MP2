@@ -1,6 +1,6 @@
 const dogs = [{ id: 1, name: "Dogs" }];
 
-const cats = [{ id: "abys", name: "Cats" }];
+const cats = [{ id: "", name: "Cats" }];
 
 const msc = [
   { id: "", name: "Snacks" },
