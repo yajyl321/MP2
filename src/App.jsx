@@ -1,19 +1,19 @@
 import { useState } from "react";
-import Logo from "./assets/logo.svg";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
 import "./App.css";
-import Header from "./assets/Components/Header";
-import Slider from "./assets/Components/Slider";
-import CategoryList from "./assets/Categories/CategoryList";
+import Header from "./Components/Header";
+import Slider from "./Components/Slider";
+import GenrePetList from "./Components/GenrePetList";
 
 function App() {
-  const [count, setCount] = useState(0);
   return (
     <div>
       <Header />
 
       <Slider />
 
-      <CategoryList />
+      <GenrePetList />
     </div>
   );
 }

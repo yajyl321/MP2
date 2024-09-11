@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./../Images/logo.png";
+import logo from "./../assets/Images/logo.png";
 import { HiHome } from "react-icons/hi2";
 import { FaBriefcase, FaEnvelope } from "react-icons/fa";
 import HeaderItem from "./HeaderItem";
@@ -20,12 +20,10 @@ function Header() {
       icon: FaEnvelope,
     },
   ];
+
   return (
     <div className="flex items-center gap-8 justify-between p-5">
-      <img src={logo} className="w-[40px] md:w-[80px] object-cover" />
-      <h1 className="text-black text-lefttext-[18px] font-semibold">
-        Pet store
-      </h1>
+      <img src={logo} className="w-[50px] md:w-[80px] object-cover" />
       <div className="flex gap-8">
         {menu.map((item) => (
           <HeaderItem name={item.name} Icon={item.icon} />

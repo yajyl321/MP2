@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { getRandomDogImage } from "../Services/GlobalApi";
+import GlobalApi from "../Services/GlobalApi";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 function Slider() {
@@ -8,22 +8,17 @@ function Slider() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
+    RandomDogImage();
     const handleResize = () => setScreenWidth(window.innerWidth);
-
     window.addEventListener("resize", handleResize);
-
-    getRandomDogImage()
-      .then((resp) => {
-        // Adjust based on response structure
-        setDogImageList(resp.data.message); // This depends on the API response
-      })
-      .catch((error) => {
-        console.error("Error fetching dog images:", error);
-        // Optionally, set an error state here
-      });
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const RandomDogImage = () => {
+    GlobalApi.getrandomDog.then((resp) => {
+      setDogImageList(resp.data.message);
+    });
+  };
 
   const sliderRight = () => {
     if (elementRef.current) {
@@ -40,11 +35,11 @@ function Slider() {
   return (
     <div className="relative">
       <HiChevronLeft
-        className="hidden md:block text-gray text-[30px] absolute mx-8 mt-[150px] rounded-lg hover:border-[4px] cursor-pointer"
+        className="hidden md:block text-gray text-[50px] absolute mx-8 mt-[150px] rounded-lg hover:border-[4px] cursor-pointer"
         onClick={sliderLeft}
       />
       <HiChevronRight
-        className="hidden md:block text-gray text-[30px] absolute mx-8 mt-[150px] rounded-lg hover:border-[4px] cursor-pointer right-0"
+        className="hidden md:block text-gray text-[50px] absolute mx-8 mt-[150px] rounded-lg hover:border-[4px] cursor-pointer right-0"
         onClick={sliderRight}
       />
       <div
