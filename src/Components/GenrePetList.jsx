@@ -20,16 +20,20 @@ function GenrePetList() {
             </div>
           )
       )}
-      {GenreList.cats.map((item) => (
-        <div className="p-8 px-8 md:px-16">
-          <h2
-            className="text-[20px] text-black 
+      {GenreList.cats.map(
+        (item, index) =>
+          index <= 4 && (
+            <div className="p-8 px-8 md:px-16">
+              <h2
+                className="text-[20px] text-black 
                 font-bold"
-          >
-            <CatList genreId={item.id} />
-          </h2>
-        </div>
-      ))}
+              >
+                {item.name}
+                <CatList genreId={item.id} />
+              </h2>
+            </div>
+          )
+      )}
       {GenreList.msc.map((item) => (
         <div className="p-8 px-8 md:px-16">
           <h2

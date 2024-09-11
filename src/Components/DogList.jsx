@@ -4,7 +4,7 @@ import DogCards from "./DogCards";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 function DogList() {
-  const [dogList, setDogList, setDogImage] = useState([]);
+  const [dogList, setDogList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const elementRef = useRef();

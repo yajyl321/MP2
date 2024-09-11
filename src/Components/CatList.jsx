@@ -20,7 +20,7 @@ function CatList() {
     try {
       const data = await GlobalApi.getcatBreed();
       console.log("Response:", data); // Log response for debugging
-      setcatList(data); // Adjust based on the actual response structure
+      setcatList(data);
     } catch (error) {
       console.error("Error fetching cat breeds:", error);
       setError(error);
