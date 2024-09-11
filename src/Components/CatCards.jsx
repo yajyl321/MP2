@@ -1,7 +1,7 @@
 import React from "react";
 
 function CatCards({ pet }) {
-  const imageUrl = pet.image || "https://via.placeholder.com/150";
+  const imageUrl = pet.image.url || "https://via.placeholder.com/150";
   return (
     <div>
       <img

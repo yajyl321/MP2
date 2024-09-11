@@ -4,7 +4,7 @@ import DogCards from "./DogCards";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 function DogList() {
-  const [dogList, setDogList] = useState([]);
+  const [dogList, setDogList, setDogImage] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const elementRef = useRef();
@@ -12,7 +12,6 @@ function DogList() {
 
   useEffect(() => {
     dogBreed();
-
     const handleResize = () => setScreenWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -22,7 +21,7 @@ function DogList() {
     try {
       const data = await GlobalApi.getdogBreed();
       console.log("Response:", data); // Log response for debugging
-      setDogList(data); // Adjust based on the actual response structure
+      setDogList(data);
     } catch (error) {
       console.error("Error fetching dog breeds:", error);
       setError(error);
