@@ -6,6 +6,9 @@ const onerandomCatImageUrl = "https://api.thecatapi.com/v1/images/search";
 const dogUrl = "https://api.thedogapi.com/v1";
 const dogapiKey =
   "live_Ej05sMHSM0OGeTfWMD1jmNAfrFlBEHqLNn3OVB6MLRf5obkI6KR9fUXaGCcdUzll";
+const catUrl = "https://api.thecatapi.com/v1";
+const catapiKey =
+  "live_Ej05sMHSM0OGeTfWMD1jmNAfrFlBEHqLNn3OVB6MLRf5obkI6KR9fUXaGCcdUzll";
 
 const getoneRandomCat = axios.get(onerandomCatImageUrl);
 const getoneRandomDog = axios.get(onerandomDogImageUrl);

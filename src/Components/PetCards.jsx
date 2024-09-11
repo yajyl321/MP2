@@ -1,8 +1,7 @@
 import React from "react";
 
 function PetCards({ pet }) {
-  // Assuming `pet` has `name` and `image` properties
-  const imageUrl = pet.image || "https://via.placeholder.com/150"; // Use a placeholder if no image is available
+  const imageUrl = pet.image || "https://via.placeholder.com/150";
 
   return (
     <div>

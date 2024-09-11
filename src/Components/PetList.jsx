@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import GlobalApi from "../Services/GlobalApi";
-import PetCards from "./PetCards";
+import DogCards from "./DogCards";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import CatCards from "./CatCards";
 
 function PetList() {
   const [dogList, setDogList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const elementRef = useRef();
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     dogBreed();
+
+    const handleResize = () => setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const dogBreed = async () => {
@@ -27,11 +35,25 @@ function PetList() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
+  const sliderRight = () => {
+    if (elementRef.current) {
+      elementRef.current.scrollLeft += screenWidth - 110;
+    }
+  };
+
+  const sliderLeft = () => {
+    if (elementRef.current) {
+      elementRef.current.scrollLeft -= screenWidth - 110;
+    }
+  };
+
   return (
-    <div className="flex">
-      {dogList.map((item) => (
-        <PetCards key={item.id} pet={item} />
-      ))}
+    <div>
+      <div className="flex overflow-x-auto gap-8 scrollbar-hide p-5 px-3 scroll-smooth">
+        {dogList.map((item) => (
+          <DogCards key={item.id} pet={item} />
+        ))}
+      </div>
     </div>
   );
 }
