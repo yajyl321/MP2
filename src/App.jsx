@@ -5,6 +5,7 @@ import "./App.css";
 import Header from "./Components/Header";
 import Slider from "./Components/Slider";
 import GenrePetList from "./Components/GenrePetList";
+import Footer from "./Footer/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Slider />
 
       <GenrePetList />
+      <Footer />
     </div>
   );
 }
