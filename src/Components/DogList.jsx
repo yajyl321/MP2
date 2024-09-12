@@ -11,17 +11,16 @@ function DogList() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    dogBreed();
+    fetchDogBreeds();
     const handleResize = () => setScreenWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const dogBreed = async () => {
+  const fetchDogBreeds = async () => {
     try {
-      const data = await GlobalApi.getdogBreed();
-      console.log("Response:", data); // Log response for debugging
-      setDogList(data);
+      const data = await GlobalApi.getDogBreed(); // Call the API function
+      setDogList(data); // Set the fetched data to state
     } catch (error) {
       console.error("Error fetching dog breeds:", error);
       setError(error);
@@ -47,9 +46,16 @@ function DogList() {
 
   return (
     <div>
-      <div className="flex overflow-x-auto gap-8 scrollbar-hide p-5 px-3 scroll-smooth">
+      <div className="flex justify-between mb-2">
+        <HiChevronLeft onClick={sliderLeft} className="cursor-pointer" />
+        <HiChevronRight onClick={sliderRight} className="cursor-pointer" />
+      </div>
+      <div
+        className="flex overflow-x-auto gap-8 scrollbar-hide p-5 px-3 scroll-smooth"
+        ref={elementRef}
+      >
         {dogList.map((item) => (
-          <DogCards key={item.id} pet={item} />
+          <DogCards key={item.id} pet={item} /> // Pass the dog data to DogCards
         ))}
       </div>
     </div>

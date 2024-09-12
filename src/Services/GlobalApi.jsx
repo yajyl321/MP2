@@ -14,19 +14,29 @@ const getoneRandomCat = axios.get(onerandomCatImageUrl);
 const getoneRandomDog = axios.get(onerandomDogImageUrl);
 const getrandomDog = axios.get(randomDogImageUrl);
 
-const getdogBreed = async (limit = 15) => {
+// Fetch dog breeds
+const getDogBreed = async (limit = 15) => {
   try {
     const response = await axios.get(
-      `${dogUrl}/breeds?api_key=${dogapiKey}&limit=${limit}`
+      `${dogUrl}/images/search?api_key=${dogapiKey}&limit=${limit}`
     );
-    return response.data;
+
+    // Transform the response data to include name and image, with checks for missing breed info
+    return response.data.map((dog) => ({
+      id: dog.id,
+      name:
+        dog.breeds && dog.breeds.length > 0
+          ? dog.breeds[0].name
+          : "Unknown Breed", // Check if breeds array exists and has items
+      image: dog.url,
+    }));
   } catch (error) {
-    console.error("Error Fecthing dog breeds:", error);
+    console.error("Error Fetching dog breeds:", error);
     throw error;
   }
 };
 
-const getcatBreed = async (limit = 15) => {
+const getCatBreed = async (limit = 15) => {
   try {
     const response = await axios.get(
       `${catUrl}/breeds?api_key=${catapiKey}&limit=${limit}`
@@ -42,6 +52,6 @@ export default {
   getoneRandomCat,
   getoneRandomDog,
   getrandomDog,
-  getdogBreed,
-  getcatBreed,
+  getDogBreed,
+  getCatBreed,
 };

@@ -18,7 +18,7 @@ function CatList() {
 
   const catBreed = async () => {
     try {
-      const data = await GlobalApi.getcatBreed();
+      const data = await GlobalApi.getCatBreed();
       console.log("Response:", data); // Log response for debugging
       setcatList(data);
     } catch (error) {
