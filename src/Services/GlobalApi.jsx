@@ -21,13 +21,12 @@ const getDogBreed = async (limit = 15) => {
       `${dogUrl}/images/search?api_key=${dogapiKey}&limit=${limit}`
     );
 
-    // Transform the response data to include name and image, with checks for missing breed info
     return response.data.map((dog) => ({
       id: dog.id,
       name:
         dog.breeds && dog.breeds.length > 0
           ? dog.breeds[0].name
-          : "Unknown Breed", // Check if breeds array exists and has items
+          : "Unknown Breed",
       image: dog.url,
     }));
   } catch (error) {

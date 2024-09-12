@@ -16,7 +16,7 @@ function CatCards({ pet }) {
       <div className="flex flex-col justify-between h-40 mt-2">
         <h1 className="font-semibold text-lg mb-2">{pet.name}</h1>
         <div className="flex justify-between items-center mt-auto">
-          <h5 className="text-gray-700">${randomInteger}</h5>
+          <h5 className="text-gray-700 font-semibold">${randomInteger}</h5>
           <button className="bg-blue-500 text-white py-2 px-4 rounded-md text-sm hover:bg-blue-600 transition-colors duration-150">
             Buy
           </button>
