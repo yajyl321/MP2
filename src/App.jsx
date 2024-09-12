@@ -15,6 +15,7 @@ function App() {
       <Slider />
 
       <GenrePetList />
+
       <Footer />
     </div>
   );
