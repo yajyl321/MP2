@@ -15,7 +15,7 @@ function CatCards({ pet }) {
 
   const lightboxContent = (
     <div>
-      <h1 className="py-2">{pet.name}</h1>
+      <h1 className="font-bold py-2">{pet.name}</h1>
       <img
         src={imageUrl}
         alt={pet.name}
@@ -39,7 +39,10 @@ function CatCards({ pet }) {
         onClose={closeLightbox}
         content={lightboxContent}
       />
-      <div className="max-w-xs md:max-w-sm w-full rounded-lg border-2 border-gray-400 hover:scale-105 transition-transform duration-150 ease-in p-3 bg-white shadow-md cursor-pointer">
+      <div
+        className="max-w-xs w-full rounded-lg border-2 border-gray-400 hover:scale-105 transition-transform duration-150 ease-in p-3 bg-white shadow-md cursor-pointer"
+        onClick={openLightbox}
+      >
         <img
           src={imageUrl}
           alt={pet.name}
@@ -47,10 +50,7 @@ function CatCards({ pet }) {
           onClick={openLightbox}
         />
         <div className="flex flex-col justify-between h-40 mt-2">
-          <h1
-            className="font-semibold text-lg mb-2 cursor-pointer"
-            onClick={openLightbox}
-          >
+          <h1 className="font-semibold text-lg mb-2 cursor-pointer">
             {pet.name}
           </h1>
           <div className="flex justify-between items-center mt-auto">

@@ -20,6 +20,7 @@ function DogList() {
   const fetchDogBreeds = async () => {
     try {
       const data = await GlobalApi.getDogBreed(); // Call the API function
+      console.log(data); //for debugging
       setDogList(data); // Set the fetched data to state
     } catch (error) {
       console.error("Error fetching dog breeds:", error);
