@@ -34,7 +34,7 @@ function GenrePetList() {
             </div>
           )
       )}
-      {GenreList.msc.map((item) => (
+      {/* {GenreList.msc.map((item) => (
         <div className="p-8 px-8 md:px-16">
           <h2
             className="text-[20px] text-black 
@@ -43,7 +43,7 @@ function GenrePetList() {
             {item.name}
           </h2>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 }
